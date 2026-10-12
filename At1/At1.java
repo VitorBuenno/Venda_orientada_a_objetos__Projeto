@@ -1,24 +1,34 @@
 package At1;
 
+import java.util.ArrayList;
+
 public class At1 {
     
     public static void main(String[] args) {
 
-        Cliente comprador = new Cliente(10, 0);
+        //Declarando o vendedor e comprador como Pessoa
+        Pessoa comprador = new cliente(10, 0);
         comprador.setNome("Cleber");
 
-        Clt vendedor = new Clt(5, 5);
+        Pessoa vendedor = new clt(5, 5);
         vendedor.setNome("Claudio");
-        vendedor.setPreco(3);
+        ((clt)vendedor).setPreco(3);
+
+        ArrayList<Pessoa> comerciantes = new ArrayList<>();
+        comerciantes.add(comprador);
+        comerciantes.add(vendedor);
+
+
 
         //Momento da compra de uma camiseta
-        vendedor.vender(comprador, 2);
+        ((clt)vendedor).vender((cliente)comprador, 2);
 
-        System.out.println("Agora " + vendedor.getNome() + " possui " + vendedor.getMoedas() + " moedas e " + 
-            vendedor.getCamisetas() + " camisetas\n");
+        //chama a função nota, diferente para cada um dos dois pelo override na herança, 
+        //mas pelo mesmo array pelo polimorfismo
+        for (Pessoa c : comerciantes) {
+            System.out.println(c.nota());
+        }
 
-        System.out.println("Agora " + comprador.getNome() + " possui " + comprador.getMoedas() + " moedas e " + 
-            comprador.getCamisetas() + " camisetas\n");
     }
 
 }
